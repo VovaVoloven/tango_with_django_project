@@ -50,11 +50,13 @@ def populate():
     
     # The code below goes through the cats dictionary, then adds each category,
     # and then adds all the associated pages for that category.
-    
+    some_views = 100
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data['views'], cat_data['likes'])
+        some_views+=10
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'])
+            add_page(c, p['title'], p['url'], views=some_views)
+            some_views+=1
             
     # Print out the categories we have added.
     for c in Category.objects.all():
